@@ -1,0 +1,383 @@
+<!DOCTYPE html><html class="dark" lang="en"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>huzAI - AI Assistant</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;900&amp;family=Geist:wght@500&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "inverse-surface": "#e5e2e1",
+                        "on-surface": "#e5e2e1",
+                        "secondary-fixed": "#e3e2e2",
+                        "on-tertiary-container": "#636565",
+                        "outline": "#8e9192",
+                        "on-error-container": "#ffdad6",
+                        "inverse-on-surface": "#313030",
+                        "primary-fixed-dim": "#c6c6c7",
+                        "on-surface-variant": "#c4c7c8",
+                        "secondary-container": "#484949",
+                        "surface-dim": "#141313",
+                        "on-primary-fixed": "#1a1c1c",
+                        "on-secondary-fixed": "#1a1c1c",
+                        "surface-bright": "#3a3939",
+                        "on-primary-container": "#636565",
+                        "error-container": "#93000a",
+                        "on-tertiary-fixed-variant": "#454747",
+                        "on-secondary-fixed-variant": "#464747",
+                        "secondary": "#c6c6c6",
+                        "on-tertiary": "#2f3131",
+                        "inverse-primary": "#5d5f5f",
+                        "primary-container": "#e2e2e2",
+                        "surface-container-high": "#2a2a2a",
+                        "tertiary-container": "#e2e2e2",
+                        "tertiary-fixed": "#e2e2e2",
+                        "surface-container-lowest": "#0e0e0e",
+                        "on-error": "#690005",
+                        "on-tertiary-fixed": "#1a1c1c",
+                        "tertiary": "#ffffff",
+                        "on-primary": "#2f3131",
+                        "on-secondary-container": "#b8b8b8",
+                        "on-primary-fixed-variant": "#454747",
+                        "tertiary-fixed-dim": "#c6c6c7",
+                        "primary-fixed": "#e2e2e2",
+                        "surface-container-highest": "#353434",
+                        "surface-variant": "#353434",
+                        "background": "#141313",
+                        "error": "#ffb4ab",
+                        "surface-container-low": "#1c1b1b",
+                        "primary": "#ffffff",
+                        "surface-tint": "#c6c6c7",
+                        "outline-variant": "#444748",
+                        "surface": "#141313",
+                        "secondary-fixed-dim": "#c6c6c6",
+                        "on-secondary": "#2f3131",
+                        "surface-container": "#201f1f",
+                        "on-background": "#e5e2e1"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "container-padding-desktop": "64px",
+                        "unit": "8px",
+                        "stack-lg": "48px",
+                        "gutter": "16px",
+                        "stack-sm": "12px",
+                        "container-padding-mobile": "20px",
+                        "stack-md": "24px"
+                    },
+                    "fontFamily": {
+                        "display-lg": ["Inter"],
+                        "headline-md": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "label-sm": ["Geist"],
+                        "display-lg-mobile": ["Inter"],
+                        "body-md": ["Inter"]
+                    },
+                    "fontSize": {
+                        "display-lg": ["48px", { "lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "600" }],
+                        "headline-md": ["24px", { "lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "500" }],
+                        "body-lg": ["20px", { "lineHeight": "30px", "fontWeight": "400" }],
+                        "label-sm": ["12px", { "lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "500" }],
+                        "display-lg-mobile": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "600" }],
+                        "body-md": ["16px", { "lineHeight": "24px", "fontWeight": "400" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        body { font-family: 'Inter', sans-serif; background-color: #141313; color: #e5e2e1; }
+        .glass-panel { background: rgba(20, 19, 19, 0.8); backdrop-filter: blur(20px); border: 1px solid rgba(42, 42, 42, 0.5); }
+        .input-glow { box-shadow: 0 0 15px rgba(255, 255, 255, 0.05); }
+        .input-glow:focus-within { box-shadow: 0 0 20px rgba(255, 255, 255, 0.1); border-color: rgba(255, 255, 255, 0.2); }
+        
+        /* Custom scrollbar */
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: transparent; }
+        ::-webkit-scrollbar-thumb { background: #353434; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #484949; }
+    </style>
+</head>
+<body class="bg-background text-on-background min-h-screen flex flex-col md:flex-row overflow-hidden selection:bg-primary-container selection:text-on-primary-container">
+<!-- Desktop Side Navigation -->
+<nav class="hidden md:flex flex-col p-stack-md h-screen w-64 fixed left-0 top-0 overflow-y-auto border-r border-outline-variant bg-surface-container-lowest z-50">
+<div class="mb-stack-lg flex items-center gap-3">
+<div class="w-10 h-10 rounded-full overflow-hidden flex items-center justify-center shrink-0 bg-black">
+  <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuBqAqJK09fZFDS-zj1S52XcnLyPkeDaQeZSN7jzve15FnGdnrKj6Pbe9dbpDjm_UFUHnw4kHlnGufUhgrLX0yjLZUXfMvoWoBuuGPStCI05bMHtSRlTN08014jtK8jnXJ4TG3fwiQCCrLTUK3zC93l1NxA6agBc3LUXMoghHrh7m-k2VejIperShUqncpD7gjoEEs5W52HvwA2T-rRynhjzDC8WSsMIy0sAqYiOzwKFkbrF6BHNuRs-aw" alt="huzAI Logo" class="w-full h-full object-contain">
+</div>
+<div>
+<h1 class="font-display-lg text-[24px] font-bold text-primary tracking-tight leading-tight">huzAI</h1>
+<p class="font-label-sm text-label-sm text-on-surface-variant">AI Life Partner</p>
+</div>
+</div>
+<div class="flex flex-col gap-2 flex-grow">
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-on-surface-variant hover:text-on-surface hover:bg-surface-variant transition-colors duration-200" href="#">
+<span class="material-symbols-outlined">home</span>
+<span class="font-label-sm text-label-sm">Home</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-primary font-bold bg-surface-container-highest transition-colors duration-200" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">smart_toy</span>
+<span class="font-label-sm text-label-sm">AI Assistant</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-on-surface-variant hover:text-on-surface hover:bg-surface-variant transition-colors duration-200" href="#">
+<span class="material-symbols-outlined">description</span>
+<span class="font-label-sm text-label-sm">Documents</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-on-surface-variant hover:text-on-surface hover:bg-surface-variant transition-colors duration-200" href="#">
+<span class="material-symbols-outlined">notifications</span>
+<span class="font-label-sm text-label-sm">Reminders</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-on-surface-variant hover:text-on-surface hover:bg-surface-variant transition-colors duration-200" href="#">
+<span class="material-symbols-outlined">account_balance</span>
+<span class="font-label-sm text-label-sm">Government Guide</span>
+</a>
+</div>
+<div class="mt-auto flex flex-col gap-2 pt-4 border-t border-surface-container-high">
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-on-surface-variant hover:text-on-surface hover:bg-surface-variant transition-colors duration-200" href="#">
+<span class="material-symbols-outlined">person</span>
+<span class="font-label-sm text-label-sm">Profile</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-on-surface-variant hover:text-on-surface hover:bg-surface-variant transition-colors duration-200" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="font-label-sm text-label-sm">Settings</span>
+</a>
+</div>
+</nav>
+<!-- Mobile Top App Bar -->
+<header class="md:hidden sticky top-0 w-full z-40 bg-background/90 backdrop-blur-md border-b border-outline-variant flex justify-between items-center px-container-padding-mobile py-4">
+<div class="flex items-center gap-2">
+<div class="w-8 h-8 rounded-full overflow-hidden flex items-center justify-center shrink-0 bg-white">
+  <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuBqAqJK09fZFDS-zj1S52XcnLyPkeDaQeZSN7jzve15FnGdnrKj6Pbe9dbpDjm_UFUHnw4kHlnGufUhgrLX0yjLZUXfMvoWoBuuGPStCI05bMHtSRlTN08014jtK8jnXJ4TG3fwiQCCrLTUK3zC93l1NxA6agBc3LUXMoghHrh7m-k2VejIperShUqncpD7gjoEEs5W52HvwA2T-rRynhjzDC8WSsMIy0sAqYiOzwKFkbrF6BHNuRs-aw" alt="huzAI Logo" class="w-full h-full object-contain">
+</div>
+<h1 class="font-display-lg-mobile text-[24px] font-black text-primary leading-none">huzAI</h1>
+</div>
+<button class="w-10 h-10 rounded-full bg-surface-container flex items-center justify-center text-on-surface hover:bg-surface-variant transition-colors">
+<span class="material-symbols-outlined">account_circle</span>
+</button>
+</header>
+<!-- Main Content Area -->
+<main class="flex-1 flex flex-col relative h-[100dvh] md:h-screen md:ml-64 bg-background">
+<!-- Chat Area -->
+<div class="flex-1 overflow-y-auto px-container-padding-mobile md:px-container-padding-desktop pb-32 pt-8 flex flex-col gap-stack-md max-w-4xl mx-auto w-full">
+<!-- Context Header -->
+<div class="text-center mb-4">
+<p class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-widest">Secure Chat Session</p>
+<p class="font-body-md text-body-md text-on-surface mt-1 opacity-70">Today, 10:24 AM</p>
+</div>
+<!-- User Message -->
+<div class="flex flex-col items-end gap-2 self-end max-w-[85%] md:max-w-[70%]">
+<div class="bg-surface-container-high text-on-surface px-6 py-4 rounded-2xl rounded-tr-sm border border-outline-variant/30 font-body-md text-body-md">
+                    How do I apply for a government certificate?
+                </div>
+</div>
+<!-- AI Response -->
+<div class="flex flex-col items-start gap-4 self-start max-w-[95%] md:max-w-[85%]">
+<div class="flex items-start gap-3 w-full">
+<div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center shrink-0 mt-1 shadow-[0_0_10px_rgba(255,255,255,0.2)]">
+<span class="material-symbols-outlined text-background text-sm" style="font-variation-settings: 'FILL' 1;">smart_toy</span>
+</div>
+<div class="flex-1 flex flex-col gap-4">
+<div class="font-body-md text-body-md text-on-surface leading-relaxed">
+                            Applying for a standard government certificate (such as a birth certificate or residency proof) can usually be done online through the central citizen portal. Here is the streamlined process:
+                        </div>
+<!-- Step-by-Step Card -->
+<div class="bg-surface-container rounded-xl border border-surface-container-high overflow-hidden">
+<div class="p-4 border-b border-surface-container-high bg-surface-container-low flex justify-between items-center">
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase">Application Process</span>
+<span class="material-symbols-outlined text-on-surface-variant text-sm">account_balance</span>
+</div>
+<div class="p-5 flex flex-col gap-4">
+<div class="flex gap-4">
+<div class="w-6 h-6 rounded-full bg-surface-container-highest flex items-center justify-center shrink-0 font-label-sm text-label-sm text-primary">1</div>
+<div>
+<h4 class="font-headline-md text-[16px] font-medium text-primary mb-1">Verify Identity</h4>
+<p class="font-body-md text-[14px] text-on-surface-variant">Log in using your verified Digital ID or secure authenticator app.</p>
+</div>
+</div>
+<div class="w-px h-4 bg-surface-container-highest ml-3 -my-2"></div>
+<div class="flex gap-4">
+<div class="w-6 h-6 rounded-full bg-surface-container-highest flex items-center justify-center shrink-0 font-label-sm text-label-sm text-primary">2</div>
+<div>
+<h4 class="font-headline-md text-[16px] font-medium text-primary mb-1">Select Document Type</h4>
+<p class="font-body-md text-[14px] text-on-surface-variant">Navigate to 'Certificates' and select the specific document required.</p>
+</div>
+</div>
+<div class="w-px h-4 bg-surface-container-highest ml-3 -my-2"></div>
+<div class="flex gap-4">
+<div class="w-6 h-6 rounded-full bg-surface-container-highest flex items-center justify-center shrink-0 font-label-sm text-label-sm text-primary">3</div>
+<div>
+<h4 class="font-headline-md text-[16px] font-medium text-primary mb-1">Pay Processing Fee</h4>
+<p class="font-body-md text-[14px] text-on-surface-variant">Complete the secure transaction (usually $15-$30 depending on the document).</p>
+</div>
+</div>
+</div>
+<div class="p-4 bg-surface-container-low border-t border-surface-container-high flex justify-end gap-3">
+<button class="px-4 py-2 rounded-lg border border-outline-variant text-on-surface font-label-sm text-label-sm hover:bg-surface-variant transition-colors">Read Guidelines</button>
+<button class="px-4 py-2 rounded-lg bg-primary text-on-primary font-label-sm text-label-sm hover:bg-surface-tint transition-colors flex items-center gap-2">
+                                    Start Application
+                                    <span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+</button>
+</div>
+</div>
+<div class="font-body-md text-body-md text-on-surface">
+                            Would you like me to prepare the initial form draft using your profile details, or do you need me to set a reminder to do this later?
+                        </div>
+</div>
+</div>
+</div>
+<!-- User Context Action (Implicit) -->
+<div class="flex flex-col items-end gap-2 self-end max-w-[85%] md:max-w-[70%] mt-2">
+<div class="bg-surface-container-high text-on-surface px-6 py-4 rounded-2xl rounded-tr-sm border border-outline-variant/30 font-body-md text-body-md">
+                    Set a reminder for my insurance renewal instead.
+                </div>
+</div>
+<!-- AI Action Confirmation -->
+<div class="flex flex-col items-start gap-4 self-start max-w-[95%] md:max-w-[85%] mt-2">
+<div class="flex items-start gap-3 w-full">
+<div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center shrink-0 mt-1 shadow-[0_0_10px_rgba(255,255,255,0.2)]">
+<span class="material-symbols-outlined text-background text-sm" style="font-variation-settings: 'FILL' 1;">smart_toy</span>
+</div>
+<div class="flex-1 flex flex-col gap-4">
+<!-- Confirmation Card -->
+<div class="bg-surface-container rounded-xl border border-primary/30 shadow-[0_0_20px_rgba(255,255,255,0.03)] overflow-hidden relative">
+<!-- Subtle animated gradient line at top -->
+<div class="absolute top-0 left-0 w-full h-[2px] bg-gradient-to-r from-transparent via-primary to-transparent opacity-50"></div>
+<div class="p-6">
+<div class="flex items-center gap-3 mb-4 text-primary">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">event_available</span>
+<h3 class="font-headline-md text-[18px] font-semibold">Create reminder?</h3>
+</div>
+<div class="bg-surface-container-lowest rounded-lg p-4 border border-surface-container-high mb-6">
+<div class="flex justify-between items-center mb-2">
+<span class="font-label-sm text-label-sm text-on-surface-variant">Task</span>
+<span class="font-body-md text-body-md text-primary font-medium">Insurance renewal</span>
+</div>
+<div class="flex justify-between items-center">
+<span class="font-label-sm text-label-sm text-on-surface-variant">Date</span>
+<span class="font-body-md text-body-md text-on-surface">20 September 2027</span>
+</div>
+</div>
+<div class="flex gap-3 w-full">
+<button class="flex-1 py-3 rounded-lg border border-outline-variant text-on-surface font-label-sm text-label-sm hover:bg-surface-variant transition-colors active:scale-[0.98]">
+                                        Cancel
+                                    </button>
+<button class="flex-1 py-3 rounded-lg bg-primary text-on-primary font-label-sm text-label-sm hover:bg-surface-tint transition-colors active:scale-[0.98]">
+                                        Confirm
+                                    </button>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Thinking Indicator (Simulated) -->
+<div class="flex items-center gap-2 self-start ml-11 opacity-50">
+<div class="w-1.5 h-1.5 rounded-full bg-primary animate-pulse"></div>
+<div class="w-1.5 h-1.5 rounded-full bg-primary animate-pulse delay-75"></div>
+<div class="w-1.5 h-1.5 rounded-full bg-primary animate-pulse delay-150"></div>
+</div>
+</div>
+<!-- Input Area (Fixed Bottom) -->
+<div class="absolute bottom-0 left-0 w-full glass-panel border-t-0 border-outline-variant pb-8 pt-4 md:pb-6 px-container-padding-mobile md:px-container-padding-desktop z-30">
+<div class="max-w-4xl mx-auto flex flex-col gap-4">
+<!-- Suggested Prompts -->
+<div class="flex gap-2 overflow-x-auto pb-2 scrollbar-hide -mx-container-padding-mobile px-container-padding-mobile md:mx-0 md:px-0">
+<button class="shrink-0 px-4 py-2 rounded-full bg-surface-container-high border border-outline-variant/50 text-secondary font-label-sm text-label-sm hover:bg-surface-variant hover:text-primary transition-colors flex items-center gap-2">
+<span class="material-symbols-outlined text-[16px]">summarize</span>
+                        Summarize my document
+                    </button>
+<button class="shrink-0 px-4 py-2 rounded-full bg-surface-container-high border border-outline-variant/50 text-secondary font-label-sm text-label-sm hover:bg-surface-variant hover:text-primary transition-colors flex items-center gap-2">
+<span class="material-symbols-outlined text-[16px]">add_alert</span>
+                        Create a reminder
+                    </button>
+<button class="shrink-0 px-4 py-2 rounded-full bg-surface-container-high border border-outline-variant/50 text-secondary font-label-sm text-label-sm hover:bg-surface-variant hover:text-primary transition-colors flex items-center gap-2">
+<span class="material-symbols-outlined text-[16px]">account_balance</span>
+                        Help me with a government service
+                    </button>
+</div>
+<!-- Main Input Field -->
+<div class="relative flex items-center w-full bg-surface-container-lowest rounded-2xl border border-surface-container-high input-glow transition-all duration-300">
+<button class="p-4 text-on-surface-variant hover:text-primary transition-colors">
+<span class="material-symbols-outlined">attach_file</span>
+</button>
+<button class="p-4 pl-0 text-on-surface-variant hover:text-primary transition-colors">
+<span class="material-symbols-outlined">image</span>
+</button>
+<input class="flex-1 bg-transparent border-none outline-none text-on-surface font-body-md placeholder:text-on-surface-variant/50 py-4 px-2 focus:ring-0" placeholder="Ask huzAI..." type="text">
+<div class="flex items-center gap-2 pr-2">
+<button class="w-10 h-10 rounded-full flex items-center justify-center text-on-surface-variant hover:bg-surface-container hover:text-primary transition-colors">
+<span class="material-symbols-outlined">mic</span>
+</button>
+<button class="w-10 h-10 rounded-full bg-primary flex items-center justify-center text-background hover:bg-surface-tint transition-colors active:scale-95">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">send</span>
+</button>
+</div>
+</div>
+<div class="text-center">
+<p class="font-label-sm text-[10px] text-on-surface-variant/40">huzAI can make mistakes. Consider verifying critical information.</p>
+</div>
+</div>
+</div>
+</main>
+<!-- Mobile Bottom Navigation (Visible only on Mobile) -->
+<nav class="md:hidden fixed bottom-0 w-full z-50 h-20 rounded-t-xl border-t border-outline-variant bg-surface-container-low/90 backdrop-blur-xl flex justify-around items-center px-container-padding-mobile pb-4 pt-2">
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:text-primary active:scale-95 transition-all gap-1 w-16" href="#">
+<span class="material-symbols-outlined">home</span>
+<span class="font-label-sm text-[10px]">Home</span>
+</a>
+<a class="flex flex-col items-center justify-center text-primary bg-primary-container/20 rounded-xl p-2 active:scale-95 transition-all gap-1 w-16 -mt-2" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">smart_toy</span>
+<span class="font-label-sm text-[10px] font-bold">AI</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:text-primary active:scale-95 transition-all gap-1 w-16" href="#">
+<span class="material-symbols-outlined">description</span>
+<span class="font-label-sm text-[10px]">Docs</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:text-primary active:scale-95 transition-all gap-1 w-16" href="#">
+<span class="material-symbols-outlined">notifications</span>
+<span class="font-label-sm text-[10px]">Reminders</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:text-primary active:scale-95 transition-all gap-1 w-16" href="#">
+<span class="material-symbols-outlined">person</span>
+<span class="font-label-sm text-[10px]">Profile</span>
+</a>
+</nav>
+<style>
+        /* Hide scrollbar for the chips container but allow scrolling */
+        .scrollbar-hide::-webkit-scrollbar {
+            display: none;
+        }
+        .scrollbar-hide {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+        
+        /* Ensure input area doesn't get covered by mobile nav */
+        @media (max-width: 767px) {
+            .pb-32 {
+                padding-bottom: 12rem; /* Extra space for chat area above input + mobile nav */
+            }
+            .absolute.bottom-0 {
+                bottom: 80px; /* Height of mobile nav */
+            }
+        }
+    </style>
+
+
+
+
+
+
+
+
+</body></html>

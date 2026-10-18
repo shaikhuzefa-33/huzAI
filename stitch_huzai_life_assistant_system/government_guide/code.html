@@ -1,0 +1,251 @@
+<!DOCTYPE html><html class="dark" lang="en"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>huzAI - Government Guide</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;900&amp;family=Geist:wght@500&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "inverse-surface": "#e5e2e1",
+                        "on-surface": "#e5e2e1",
+                        "secondary-fixed": "#e3e2e2",
+                        "on-tertiary-container": "#636565",
+                        "outline": "#8e9192",
+                        "on-error-container": "#ffdad6",
+                        "inverse-on-surface": "#313030",
+                        "primary-fixed-dim": "#c6c6c7",
+                        "on-surface-variant": "#c4c7c8",
+                        "secondary-container": "#484949",
+                        "surface-dim": "#141313",
+                        "on-primary-fixed": "#1a1c1c",
+                        "on-secondary-fixed": "#1a1c1c",
+                        "surface-bright": "#3a3939",
+                        "on-primary-container": "#636565",
+                        "error-container": "#93000a",
+                        "on-tertiary-fixed-variant": "#454747",
+                        "on-secondary-fixed-variant": "#464747",
+                        "secondary": "#c6c6c6",
+                        "on-tertiary": "#2f3131",
+                        "inverse-primary": "#5d5f5f",
+                        "primary-container": "#e2e2e2",
+                        "surface-container-high": "#2a2a2a",
+                        "tertiary-container": "#e2e2e2",
+                        "tertiary-fixed": "#e2e2e2",
+                        "surface-container-lowest": "#0e0e0e",
+                        "on-error": "#690005",
+                        "on-tertiary-fixed": "#1a1c1c",
+                        "tertiary": "#ffffff",
+                        "on-primary": "#2f3131",
+                        "on-secondary-container": "#b8b8b8",
+                        "on-primary-fixed-variant": "#454747",
+                        "tertiary-fixed-dim": "#c6c6c7",
+                        "primary-fixed": "#e2e2e2",
+                        "surface-container-highest": "#353434",
+                        "surface-variant": "#353434",
+                        "background": "#141313",
+                        "error": "#ffb4ab",
+                        "surface-container-low": "#1c1b1b",
+                        "primary": "#ffffff",
+                        "surface-tint": "#c6c6c7",
+                        "outline-variant": "#444748",
+                        "surface": "#141313",
+                        "secondary-fixed-dim": "#c6c6c6",
+                        "on-secondary": "#2f3131",
+                        "surface-container": "#201f1f",
+                        "on-background": "#e5e2e1"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "container-padding-desktop": "64px",
+                        "unit": "8px",
+                        "stack-lg": "48px",
+                        "gutter": "16px",
+                        "stack-sm": "12px",
+                        "container-padding-mobile": "20px",
+                        "stack-md": "24px"
+                    },
+                    "fontFamily": {
+                        "display-lg": ["Inter"],
+                        "headline-md": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "label-sm": ["Geist"],
+                        "display-lg-mobile": ["Inter"],
+                        "body-md": ["Inter"]
+                    },
+                    "fontSize": {
+                        "display-lg": ["48px", { "lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "600" }],
+                        "headline-md": ["24px", { "lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "500" }],
+                        "body-lg": ["20px", { "lineHeight": "30px", "fontWeight": "400" }],
+                        "label-sm": ["12px", { "lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "500" }],
+                        "display-lg-mobile": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "600" }],
+                        "body-md": ["16px", { "lineHeight": "24px", "fontWeight": "400" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .ai-glow {
+            box-shadow: 0 0 15px 0px rgba(255, 255, 255, 0.05);
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background min-h-screen font-body-md text-body-md overflow-x-hidden md:pl-64">
+<!-- TopAppBar (Mobile Only) -->
+<header class="sticky top-0 w-full z-40 bg-background/90 backdrop-blur-md text-primary font-headline-md-mobile text-headline-md-mobile flex justify-between items-center px-container-padding-mobile py-unit w-full md:hidden border-b border-outline-variant transition-opacity duration-300">
+<img src="https://lh3.googleusercontent.com/aida-public/AB6AXuBqAqJK09fZFDS-zj1S52XcnLyPkeDaQeZSN7jzve15FnGdnrKj6Pbe9dbpDjm_UFUHnw4kHlnGufUhgrLX0yjLZUXfMvoWoBuuGPStCI05bMHtSRlTN08014jtK8jnXJ4TG3fwiQCCrLTUK3zC93l1NxA6agBc3LUXMoghHrh7m-k2VejIperShUqncpD7gjoEEs5W52HvwA2T-rRynhjzDC8WSsMIy0sAqYiOzwKFkbrF6BHNuRs-aw" alt="huzAI Logo" class="h-8 w-auto">
+<div class="flex items-center gap-gutter">
+<span class="material-symbols-outlined" data-icon="account_circle">account_circle</span>
+</div>
+</header>
+<!-- SideNavBar (Desktop Only) -->
+<nav class="hidden md:flex h-screen w-64 fixed left-0 top-0 overflow-y-auto border-r border-outline-variant bg-surface-container-lowest text-primary flex-col p-stack-md">
+<div class="mb-stack-lg">
+<img src="https://lh3.googleusercontent.com/aida-public/AB6AXuBqAqJK09fZFDS-zj1S52XcnLyPkeDaQeZSN7jzve15FnGdnrKj6Pbe9dbpDjm_UFUHnw4kHlnGufUhgrLX0yjLZUXfMvoWoBuuGPStCI05bMHtSRlTN08014jtK8jnXJ4TG3fwiQCCrLTUK3zC93l1NxA6agBc3LUXMoghHrh7m-k2VejIperShUqncpD7gjoEEs5W52HvwA2T-rRynhjzDC8WSsMIy0sAqYiOzwKFkbrF6BHNuRs-aw" alt="huzAI Logo" class="h-8 w-auto mb-2 bg-surface-container-lowest rounded-lg">
+<div class="font-body-md text-body-md text-on-surface-variant">AI Life Partner</div>
+</div>
+<ul class="space-y-unit flex-grow">
+<li class=""><a class="flex items-center gap-unit p-3 text-on-surface-variant hover:text-on-surface hover:bg-surface-variant transition-colors duration-200 rounded-lg" href="#"><span class="material-symbols-outlined" data-icon="home">home</span> <span class="font-label-sm text-label-sm">Home</span></a></li>
+<li class=""><a class="flex items-center gap-unit p-3 text-on-surface-variant hover:text-on-surface hover:bg-surface-variant transition-colors duration-200 rounded-lg" href="#"><span class="material-symbols-outlined" data-icon="smart_toy">smart_toy</span> <span class="font-label-sm text-label-sm">AI Assistant</span></a></li>
+<li class=""><a class="flex items-center gap-unit p-3 text-on-surface-variant hover:text-on-surface hover:bg-surface-variant transition-colors duration-200 rounded-lg" href="#"><span class="material-symbols-outlined" data-icon="description">description</span> <span class="font-label-sm text-label-sm">Documents</span></a></li>
+<li class=""><a class="flex items-center gap-unit p-3 text-on-surface-variant hover:text-on-surface hover:bg-surface-variant transition-colors duration-200 rounded-lg" href="#"><span class="material-symbols-outlined" data-icon="notifications">notifications</span> <span class="font-label-sm text-label-sm">Reminders</span></a></li>
+<li class=""><a class="flex items-center gap-unit p-3 text-primary font-bold bg-surface-container-highest rounded-lg transition-transform scale-95 active:scale-90" href="#"><span class="material-symbols-outlined" data-icon="account_balance">account_balance</span> <span class="font-label-sm text-label-sm">Government Guide</span></a></li>
+<li class=""><a class="flex items-center gap-unit p-3 text-on-surface-variant hover:text-on-surface hover:bg-surface-variant transition-colors duration-200 rounded-lg" href="#"><span class="material-symbols-outlined" data-icon="elderly">elderly</span> <span class="font-label-sm text-label-sm">Elder Mode</span></a></li>
+<li class=""><a class="flex items-center gap-unit p-3 text-on-surface-variant hover:text-on-surface hover:bg-surface-variant transition-colors duration-200 rounded-lg" href="#"><span class="material-symbols-outlined" data-icon="family_restroom">family_restroom</span> <span class="font-label-sm text-label-sm">Trusted Family</span></a></li>
+</ul>
+<div class="mt-auto border-t border-outline-variant pt-stack-sm space-y-unit">
+<li class=""><a class="flex items-center gap-unit p-3 text-on-surface-variant hover:text-on-surface hover:bg-surface-variant transition-colors duration-200 rounded-lg" href="#"><span class="material-symbols-outlined" data-icon="person">person</span> <span class="font-label-sm text-label-sm">Profile</span></a></li>
+<li class=""><a class="flex items-center gap-unit p-3 text-on-surface-variant hover:text-on-surface hover:bg-surface-variant transition-colors duration-200 rounded-lg" href="#"><span class="material-symbols-outlined" data-icon="settings">settings</span> <span class="font-label-sm text-label-sm">Settings</span></a></li>
+</div>
+</nav>
+<!-- Main Content Canvas -->
+<main class="p-container-padding-mobile md:p-container-padding-desktop max-w-[1440px] mx-auto pb-32 md:pb-container-padding-desktop space-y-stack-lg">
+<!-- Header Section -->
+<section class="space-y-stack-sm">
+<h1 class="font-display-lg-mobile text-display-lg-mobile md:font-display-lg md:text-display-lg text-primary">Government Guide</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-2xl">Understand government services, documents and application processes.</p>
+</section>
+<!-- Search Bar -->
+<section class="relative">
+<div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
+<span class="material-symbols-outlined text-outline" data-icon="search">search</span>
+</div>
+<input class="w-full bg-surface-container-high border border-outline-variant rounded-xl py-4 pl-12 pr-4 font-body-lg text-body-lg text-on-surface placeholder-on-surface-variant focus:outline-none focus:ring-1 focus:ring-primary focus:border-primary transition-all ai-glow" placeholder="What do you need help with?" type="text">
+</section>
+<!-- Category Grid (Bento Style) -->
+<section class="space-y-stack-md">
+<h2 class="font-headline-md text-headline-md text-primary">Browse Categories</h2>
+<div class="grid grid-cols-2 md:grid-cols-3 gap-gutter">
+<a class="bg-surface-container-high border border-outline-variant rounded-xl p-6 flex flex-col items-center justify-center text-center hover:bg-surface-variant transition-colors group" href="#">
+<span class="material-symbols-outlined text-primary mb-3 text-4xl group-hover:scale-110 transition-transform" data-icon="badge">badge</span>
+<span class="font-label-sm text-label-sm text-on-surface">Identity</span>
+</a>
+<a class="bg-surface-container-high border border-outline-variant rounded-xl p-6 flex flex-col items-center justify-center text-center hover:bg-surface-variant transition-colors group" href="#">
+<span class="material-symbols-outlined text-primary mb-3 text-4xl group-hover:scale-110 transition-transform" data-icon="license">license</span>
+<span class="font-label-sm text-label-sm text-on-surface">Certificates</span>
+</a>
+<a class="bg-surface-container-high border border-outline-variant rounded-xl p-6 flex flex-col items-center justify-center text-center hover:bg-surface-variant transition-colors group" href="#">
+<span class="material-symbols-outlined text-primary mb-3 text-4xl group-hover:scale-110 transition-transform" data-icon="school">school</span>
+<span class="font-label-sm text-label-sm text-on-surface">Education</span>
+</a>
+<a class="bg-surface-container-high border border-outline-variant rounded-xl p-6 flex flex-col items-center justify-center text-center hover:bg-surface-variant transition-colors group" href="#">
+<span class="material-symbols-outlined text-primary mb-3 text-4xl group-hover:scale-110 transition-transform" data-icon="directions_car">directions_car</span>
+<span class="font-label-sm text-label-sm text-on-surface">Transport</span>
+</a>
+<a class="bg-surface-container-high border border-outline-variant rounded-xl p-6 flex flex-col items-center justify-center text-center hover:bg-surface-variant transition-colors group" href="#">
+<span class="material-symbols-outlined text-primary mb-3 text-4xl group-hover:scale-110 transition-transform" data-icon="attach_money">attach_money</span>
+<span class="font-label-sm text-label-sm text-on-surface">Benefits</span>
+</a>
+<a class="bg-surface-container-high border border-outline-variant rounded-xl p-6 flex flex-col items-center justify-center text-center hover:bg-surface-variant transition-colors group" href="#">
+<span class="material-symbols-outlined text-primary mb-3 text-4xl group-hover:scale-110 transition-transform" data-icon="edit_document">edit_document</span>
+<span class="font-label-sm text-label-sm text-on-surface">Applications</span>
+</a>
+</div>
+</section>
+<!-- Popular Services Cards -->
+<section class="space-y-stack-md">
+<h2 class="font-headline-md text-headline-md text-primary">Popular Services</h2>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-stack-md">
+<!-- Card 1 -->
+<div class="bg-surface-container border border-outline-variant rounded-xl p-6 flex flex-col justify-between hover:border-outline transition-colors">
+<div>
+<div class="flex items-center gap-unit mb-4">
+<span class="material-symbols-outlined text-primary bg-surface-container-high p-2 rounded-full" data-icon="passport">downloading</span>
+<h3 class="font-headline-md text-headline-md text-on-surface">Renew Passport</h3>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant mb-6">Step-by-step guide to renewing your standard adult passport online or via mail.</p>
+</div>
+<button class="bg-primary text-on-primary font-label-sm text-label-sm py-2 px-4 rounded-full w-max hover:scale-95 transition-transform">Start Guide</button>
+</div>
+<!-- Card 2 -->
+<div class="bg-surface-container border border-outline-variant rounded-xl p-6 flex flex-col justify-between hover:border-outline transition-colors">
+<div>
+<div class="flex items-center gap-unit mb-4">
+<span class="material-symbols-outlined text-primary bg-surface-container-high p-2 rounded-full" data-icon="local_hospital">local_hospital</span>
+<h3 class="font-headline-md text-headline-md text-on-surface">Healthcare Registration</h3>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant mb-6">Learn how to register for public healthcare services and find local providers.</p>
+</div>
+<button class="bg-primary text-on-primary font-label-sm text-label-sm py-2 px-4 rounded-full w-max hover:scale-95 transition-transform">Start Guide</button>
+</div>
+<!-- Card 3 -->
+<div class="bg-surface-container border border-outline-variant rounded-xl p-6 flex flex-col justify-between hover:border-outline transition-colors">
+<div>
+<div class="flex items-center gap-unit mb-4">
+<span class="material-symbols-outlined text-primary bg-surface-container-high p-2 rounded-full" data-icon="home_work">home_work</span>
+<h3 class="font-headline-md text-headline-md text-on-surface">Property Taxes</h3>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant mb-6">Understand your local property tax assessments, deadlines, and payment methods.</p>
+</div>
+<button class="border border-outline-variant text-on-surface font-label-sm text-label-sm py-2 px-4 rounded-full w-max hover:bg-surface-variant transition-colors hover:scale-95">Learn More</button>
+</div>
+</div>
+</section>
+</main>
+<!-- BottomNavBar (Mobile Only) -->
+<nav class="md:hidden fixed bottom-0 left-0 w-full flex justify-around items-center px-container-padding-mobile pb-4 bg-surface/80 backdrop-blur-xl z-50 h-20 rounded-t-xl text-primary font-label-sm-mobile text-label-sm-mobile border-t border-outline-variant">
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:text-primary active:scale-95 transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="home">home</span>
+<span class="">Home</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:text-primary active:scale-95 transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="smart_toy">smart_toy</span>
+<span class="">AI</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:text-primary active:scale-95 transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="description">description</span>
+<span class="">Docs</span>
+</a>
+<!-- Using intent fallback for Government Guide -> Home or AI? Better to just show generic inactive state if it doesn't fit the exact 5. For now, matching the JSON exactly. -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:text-primary active:scale-95 transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+<span class="">Reminders</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:text-primary active:scale-95 transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="person">person</span>
+<span class="">Profile</span>
+</a>
+</nav>
+
+
+
+
+
+
+
+
+</body></html>

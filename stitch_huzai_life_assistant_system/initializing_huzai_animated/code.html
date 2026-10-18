@@ -1,0 +1,356 @@
+<!DOCTYPE html><html class="dark" lang="en"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>huzAI - Initializing</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;900&amp;family=Geist:wght@500&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "error": "#ffb4ab",
+                        "surface-container-highest": "#353434",
+                        "on-tertiary-fixed": "#1a1c1c",
+                        "on-surface-variant": "#c4c7c8",
+                        "tertiary": "#ffffff",
+                        "secondary": "#c6c6c6",
+                        "outline": "#8e9192",
+                        "primary-fixed": "#e2e2e2",
+                        "on-secondary": "#2f3131",
+                        "on-error": "#690005",
+                        "background": "#141313",
+                        "surface-container-lowest": "#0e0e0e",
+                        "on-tertiary": "#2f3131",
+                        "tertiary-fixed-dim": "#c6c6c7",
+                        "on-primary-fixed": "#1a1c1c",
+                        "surface": "#141313",
+                        "on-secondary-fixed": "#1a1c1c",
+                        "surface-bright": "#3a3939",
+                        "on-secondary-fixed-variant": "#464747",
+                        "secondary-fixed": "#e3e2e2",
+                        "inverse-on-surface": "#313030",
+                        "on-secondary-container": "#b8b8b8",
+                        "primary-container": "#e2e2e2",
+                        "on-primary": "#2f3131",
+                        "inverse-primary": "#5d5f5f",
+                        "on-primary-fixed-variant": "#454747",
+                        "on-primary-container": "#636565",
+                        "on-background": "#e5e2e1",
+                        "outline-variant": "#444748",
+                        "on-tertiary-fixed-variant": "#454747",
+                        "secondary-container": "#484949",
+                        "inverse-surface": "#e5e2e1",
+                        "surface-container-high": "#2a2a2a",
+                        "on-surface": "#e5e2e1",
+                        "on-error-container": "#ffdad6",
+                        "tertiary-fixed": "#e2e2e2",
+                        "secondary-fixed-dim": "#c6c6c6",
+                        "surface-tint": "#c6c6c7",
+                        "surface-variant": "#353434",
+                        "error-container": "#93000a",
+                        "surface-dim": "#141313",
+                        "on-tertiary-container": "#636565",
+                        "surface-container-low": "#1c1b1b",
+                        "tertiary-container": "#e2e2e2",
+                        "primary-fixed-dim": "#c6c6c7",
+                        "surface-container": "#201f1f",
+                        "primary": "#ffffff"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "stack-sm": "12px",
+                        "stack-lg": "48px",
+                        "unit": "8px",
+                        "gutter": "16px",
+                        "stack-md": "24px",
+                        "container-padding-desktop": "64px",
+                        "container-padding-mobile": "20px"
+                    },
+                    "fontFamily": {
+                        "headline-md": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "display-lg": ["Inter"],
+                        "body-md": ["Inter"],
+                        "display-lg-mobile": ["Inter"],
+                        "label-sm": ["Geist"]
+                    },
+                    "fontSize": {
+                        "headline-md": ["24px", { "lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "500" }],
+                        "body-lg": ["20px", { "lineHeight": "30px", "fontWeight": "400" }],
+                        "display-lg": ["48px", { "lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "600" }],
+                        "body-md": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                        "display-lg-mobile": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "600" }],
+                        "label-sm": ["12px", { "lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "500" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        body {
+            background-color: transparent; 
+        }
+        
+        .pulse-ring {
+            animation: pulse-ring 2s cubic-bezier(0.215, 0.61, 0.355, 1) infinite;
+        }
+
+        @keyframes pulse-ring {
+            0% {
+                transform: scale(0.8);
+                opacity: 0.5;
+                box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.1);
+            }
+            70% {
+                transform: scale(1);
+                opacity: 0.1;
+                box-shadow: 0 0 0 20px rgba(255, 255, 255, 0);
+            }
+            100% {
+                transform: scale(0.8);
+                opacity: 0.5;
+                box-shadow: 0 0 0 0 rgba(255, 255, 255, 0);
+            }
+        }
+
+        .spin-slow {
+            animation: spin 8s linear infinite;
+        }
+
+        .spin-reverse-slower {
+            animation: spin-reverse 12s linear infinite;
+        }
+
+        @keyframes spin {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        @keyframes spin-reverse {
+            from { transform: rotate(360deg); }
+            to { transform: rotate(0deg); }
+        }
+
+        .fade-text {
+            animation: fade-in-out 3s ease-in-out infinite;
+        }
+
+        @keyframes fade-in-out {
+            0%, 100% { opacity: 0; transform: translateY(5px); }
+            50% { opacity: 1; transform: translateY(0); }
+        }
+
+        .progress-bar-fill {
+            transition: width 0.5s ease-out;
+        }
+    </style>
+</head>
+<body class="h-screen w-full flex flex-col items-center justify-center overflow-hidden text-on-surface antialiased bg-black">
+<div class="absolute inset-0 w-full h-full z-[-1]">
+    <!-- STITCH_SHADER_START:ANIMATION_29 class="" -->
+<div class="" style="display:block;width:100%;height:100%;min-height:200px;">
+<canvas id="shader-canvas-ANIMATION_29" style="display:block;width:100%;height:100%" width="1280" height="1036"></canvas>
+<script>
+(function() {
+  const canvas = document.getElementById('shader-canvas-ANIMATION_29');
+
+  // Sync the WebGL drawing-buffer size with the CSS-driven layout size.
+  // This fires on initial layout and whenever the element is resized.
+  function syncSize() {
+    const w = canvas.clientWidth  || 1280;
+    const h = canvas.clientHeight || 720;
+    if (canvas.width !== w || canvas.height !== h) {
+      canvas.width  = w;
+      canvas.height = h;
+    }
+  }
+  if (typeof ResizeObserver !== 'undefined') {
+    new ResizeObserver(syncSize).observe(canvas);
+  }
+  syncSize();
+
+  const gl = canvas.getContext('webgl') || canvas.getContext('experimental-webgl');
+  if (!gl) return;
+  const vs = `attribute vec2 a_position;
+varying vec2 v_texCoord;
+void main() {
+  v_texCoord = a_position * 0.5 + 0.5;
+  gl_Position = vec4(a_position, 0.0, 1.0);
+}`;
+  const fs = `precision highp float;
+uniform float u_time;
+uniform vec2 u_resolution;
+varying vec2 v_texCoord;
+
+void main() {
+    vec2 uv = v_texCoord;
+    
+    // Create a pulsing glow effect from the center
+    vec2 center = vec4(0.5, 0.5, 0.5, 0.5).xy;
+    float dist = distance(uv, center);
+    
+    // Core pulse
+    float pulse = 0.5 + 0.5 * sin(u_time * 1.5);
+    float glow = exp(-dist * 8.0) * (0.8 + 0.2 * pulse);
+    
+    // Subtle scanning line
+    float scan = smoothstep(0.48, 0.5, abs(fract(uv.y - u_time * 0.1) - 0.5));
+    
+    // huzAI Blue/Purple palette
+    vec3 color1 = vec3(0.0, 0.5, 1.0); // Cyan/Blue
+    vec3 color2 = vec3(0.5, 0.0, 1.0); // Purple
+    vec3 finalColor = mix(color1, color2, uv.y + 0.2 * sin(u_time));
+    
+    // Apply background darkening
+    finalColor *= glow;
+    finalColor += 0.05 * scan * color1;
+    
+    gl_FragColor = vec4(finalColor, 1.0);
+}`;
+  function cs(type, src) {
+    const s = gl.createShader(type);
+    gl.shaderSource(s, src);
+    gl.compileShader(s);
+    return s;
+  }
+  const prog = gl.createProgram();
+  gl.attachShader(prog, cs(gl.VERTEX_SHADER, vs));
+  gl.attachShader(prog, cs(gl.FRAGMENT_SHADER, fs));
+  gl.linkProgram(prog);
+  gl.useProgram(prog);
+  const buf = gl.createBuffer();
+  gl.bindBuffer(gl.ARRAY_BUFFER, buf);
+  gl.bufferData(gl.ARRAY_BUFFER, new Float32Array([-1,-1, 1,-1, -1,1, 1,1]), gl.STATIC_DRAW);
+  const pos = gl.getAttribLocation(prog, 'a_position');
+  gl.enableVertexAttribArray(pos);
+  gl.vertexAttribPointer(pos, 2, gl.FLOAT, false, 0, 0);
+  const uTime = gl.getUniformLocation(prog, 'u_time');
+  const uRes = gl.getUniformLocation(prog, 'u_resolution');
+  const uMouse = gl.getUniformLocation(prog, 'u_mouse');
+
+  // u_mouse is in pixel coordinates matching u_resolution (ShaderToy convention).
+  // Shaders that need normalized coords should use: u_mouse / u_resolution.
+  let mouse = { x: canvas.width / 2, y: canvas.height / 2 };
+  window.addEventListener('mousemove', (event) => {
+    const rect = canvas.getBoundingClientRect();
+    if (rect.width && rect.height) {
+      const nx = (event.clientX - rect.left) / rect.width;
+      const ny = 1.0 - (event.clientY - rect.top) / rect.height;
+      mouse.x = nx * canvas.width;
+      mouse.y = ny * canvas.height;
+    }
+  });
+
+  function render(t) {
+    if (typeof ResizeObserver === 'undefined') syncSize();
+    gl.viewport(0, 0, canvas.width, canvas.height);
+    if (uTime) gl.uniform1f(uTime, t * 0.001);
+    if (uRes) gl.uniform2f(uRes, canvas.width, canvas.height);
+    if (uMouse) gl.uniform2f(uMouse, mouse.x, mouse.y);
+    gl.drawArrays(gl.TRIANGLE_STRIP, 0, 4);
+    requestAnimationFrame(render);
+  }
+  render(0);
+})();
+</script>
+</div>
+<!-- STITCH_SHADER_END:ANIMATION_29 -->
+</div>
+<!-- Center Content -->
+<main class="flex flex-col items-center justify-center flex-grow w-full max-w-md px-container-padding-mobile md:px-0 relative z-10 bg-transparent">
+<!-- Animated Ring / Data Vis -->
+<div class="relative w-48 h-48 mb-stack-lg flex items-center justify-center">
+<!-- Outer dashed ring -->
+<svg class="absolute inset-0 w-full h-full text-surface-container-highest spin-slow" fill="none" stroke="currentColor" stroke-dasharray="4 8" stroke-width="1" viewBox="0 0 100 100">
+<circle cx="50" cy="50" r="48"></circle>
+</svg>
+<!-- Inner solid thin ring -->
+<svg class="absolute inset-4 w-[calc(100%-2rem)] h-[calc(100%-2rem)] text-outline-variant spin-reverse-slower" fill="none" stroke="currentColor" stroke-width="0.5" viewBox="0 0 100 100">
+<circle cx="50" cy="50" r="48"></circle>
+</svg>
+<!-- Pulsing central core -->
+<div class="absolute w-24 h-24 rounded-full flex items-center justify-center pulse-ring">
+<img src="https://lh3.googleusercontent.com/aida-public/AB6AXuA7MdS0BCnSXqpsif9o4ZmRUuL0v1bkdY_z8D0e8bHDrws06yV6xphzlaA9tfqMIhid0idxHTMkfYUEkJcHmZYEIGvJaCkIPy7Q4QOxXOlXYkD1TDZqDCAcT-OrvE0R1mAKbc6SzsLLR4-hGPmu3qK7zevn8AJpgKQtQTuXB9rEZQ8iZMa1Q6p7yp5Ou53FUex2bWD_3uGQYkwiB8TEaxu3OSFU5V-Bu7H5S96ijyGNClipzfd-hFGCk4Wd_U7fXTUP2_Y" alt="huzAI Logo" class="w-16 h-16 object-contain">
+</div>
+</div>
+<!-- Logo -->
+<h1 class="font-display-lg-mobile md:font-display-lg text-display-lg-mobile md:text-display-lg font-black tracking-tight text-primary mb-stack-sm">
+            huzAI
+        </h1>
+<!-- Status Messages -->
+<div class="h-12 flex items-center justify-center overflow-hidden w-full relative">
+<p class="font-body-md text-body-md text-on-surface-variant text-center absolute w-full fade-text" id="status-text">Establishing secure connection...</p>
+</div>
+</main>
+<!-- Bottom Progress -->
+<div class="w-full absolute bottom-0 left-0 pb-container-padding-mobile px-container-padding-mobile md:px-container-padding-desktop flex flex-col items-center relative z-10 bg-transparent">
+<span class="font-label-sm text-label-sm text-on-surface-variant mb-unit tracking-widest uppercase" id="percentage-text">100%</span>
+<div class="w-full max-w-md h-[1px] bg-surface-container-highest rounded-full overflow-hidden">
+<div class="h-full bg-primary progress-bar-fill w-0 shadow-[0_0_10px_rgba(255,255,255,0.5)]" id="progress-bar" style="width: 100%;"></div>
+</div>
+</div>
+<script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const statusMessages = [
+                'Establishing secure connection...',
+                'Syncing your documents...',
+                'Optimizing AI assistant for your preferences...',
+                'Preparing your dashboard...',
+                'Finalizing setup...'
+            ];
+            
+            const statusTextElement = document.getElementById('status-text');
+            const progressBar = document.getElementById('progress-bar');
+            const percentageText = document.getElementById('percentage-text');
+            
+            let currentMessageIndex = 0;
+            let currentProgress = 0;
+
+            // Rotate messages
+            setInterval(() => {
+                // The animation cycle is 3s. We change text when it's invisible (roughly 1.5s in or at start of loop).
+                // Actually, CSS animation handles opacity. Just change text slightly out of sync to ensure it changes while hidden.
+                setTimeout(() => {
+                    currentMessageIndex = (currentMessageIndex + 1) % statusMessages.length;
+                    statusTextElement.textContent = statusMessages[currentMessageIndex];
+                }, 1500); // Change text halfway through the 3s fade cycle
+            }, 3000);
+
+            // Simulate progress
+            const progressInterval = setInterval(() => {
+                // Randomly increase progress between 1 and 8 percent
+                const increment = Math.floor(Math.random() * 8) + 1;
+                currentProgress += increment;
+                
+                if (currentProgress > 99) {
+                    currentProgress = 99; // Hold at 99% until 'done'
+                    clearInterval(progressInterval);
+                    
+                    // Simulate completion transition after holding at 99%
+                    setTimeout(() => {
+                        currentProgress = 100;
+                        updateProgressUI();
+                        // In a real app, window.location.href = '/dashboard' would happen here
+                    }, 2000);
+                }
+                
+                updateProgressUI();
+            }, 500);
+
+            function updateProgressUI() {
+                progressBar.style.width = `${currentProgress}%`;
+                percentageText.textContent = `${currentProgress}%`;
+            }
+        });
+    </script>
+
+
+</body></html>

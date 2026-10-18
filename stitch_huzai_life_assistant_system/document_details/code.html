@@ -1,0 +1,257 @@
+<!DOCTYPE html><html class="dark" lang="en"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>huzAI - Document Details</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;900&amp;family=Geist:wght@500&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "inverse-surface": "#e5e2e1",
+                    "on-surface": "#e5e2e1",
+                    "secondary-fixed": "#e3e2e2",
+                    "on-tertiary-container": "#636565",
+                    "outline": "#8e9192",
+                    "on-error-container": "#ffdad6",
+                    "inverse-on-surface": "#313030",
+                    "primary-fixed-dim": "#c6c6c7",
+                    "on-surface-variant": "#c4c7c8",
+                    "secondary-container": "#484949",
+                    "surface-dim": "#141313",
+                    "on-primary-fixed": "#1a1c1c",
+                    "on-secondary-fixed": "#1a1c1c",
+                    "surface-bright": "#3a3939",
+                    "on-primary-container": "#636565",
+                    "error-container": "#93000a",
+                    "on-tertiary-fixed-variant": "#454747",
+                    "on-secondary-fixed-variant": "#464747",
+                    "secondary": "#c6c6c6",
+                    "on-tertiary": "#2f3131",
+                    "inverse-primary": "#5d5f5f",
+                    "primary-container": "#e2e2e2",
+                    "surface-container-high": "#2a2a2a",
+                    "tertiary-container": "#e2e2e2",
+                    "tertiary-fixed": "#e2e2e2",
+                    "surface-container-lowest": "#0e0e0e",
+                    "on-error": "#690005",
+                    "on-tertiary-fixed": "#1a1c1c",
+                    "tertiary": "#ffffff",
+                    "on-primary": "#2f3131",
+                    "on-secondary-container": "#b8b8b8",
+                    "on-primary-fixed-variant": "#454747",
+                    "tertiary-fixed-dim": "#c6c6c7",
+                    "primary-fixed": "#e2e2e2",
+                    "surface-container-highest": "#353434",
+                    "surface-variant": "#353434",
+                    "background": "#141313",
+                    "error": "#ffb4ab",
+                    "surface-container-low": "#1c1b1b",
+                    "primary": "#ffffff",
+                    "surface-tint": "#c6c6c7",
+                    "outline-variant": "#444748",
+                    "surface": "#141313",
+                    "secondary-fixed-dim": "#c6c6c6",
+                    "on-secondary": "#2f3131",
+                    "surface-container": "#201f1f",
+                    "on-background": "#e5e2e1"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "container-padding-desktop": "64px",
+                    "unit": "8px",
+                    "stack-lg": "48px",
+                    "gutter": "16px",
+                    "stack-sm": "12px",
+                    "container-padding-mobile": "20px",
+                    "stack-md": "24px"
+            },
+            "fontFamily": {
+                    "display-lg": [
+                            "Inter"
+                    ],
+                    "headline-md": [
+                            "Inter"
+                    ],
+                    "body-lg": [
+                            "Inter"
+                    ],
+                    "label-sm": [
+                            "Geist"
+                    ],
+                    "display-lg-mobile": [
+                            "Inter"
+                    ],
+                    "body-md": [
+                            "Inter"
+                    ]
+            },
+            "fontSize": {
+                    "display-lg": [
+                            "48px",
+                            {
+                                    "lineHeight": "56px",
+                                    "letterSpacing": "-0.02em",
+                                    "fontWeight": "600"
+                            }
+                    ],
+                    "headline-md": [
+                            "24px",
+                            {
+                                    "lineHeight": "32px",
+                                    "letterSpacing": "-0.01em",
+                                    "fontWeight": "500"
+                            }
+                    ],
+                    "body-lg": [
+                            "20px",
+                            {
+                                    "lineHeight": "30px",
+                                    "fontWeight": "400"
+                            }
+                    ],
+                    "label-sm": [
+                            "12px",
+                            {
+                                    "lineHeight": "16px",
+                                    "letterSpacing": "0.05em",
+                                    "fontWeight": "500"
+                            }
+                    ],
+                    "display-lg-mobile": [
+                            "32px",
+                            {
+                                    "lineHeight": "40px",
+                                    "letterSpacing": "-0.02em",
+                                    "fontWeight": "600"
+                            }
+                    ],
+                    "body-md": [
+                            "16px",
+                            {
+                                    "lineHeight": "24px",
+                                    "fontWeight": "400"
+                            }
+                    ]
+            }
+          },
+        }
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .ai-border {
+            border: 1px solid;
+            border-image-slice: 1;
+            border-width: 1px;
+            border-image-source: linear-gradient(to right, #00f2fe, #4facfe);
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background min-h-screen font-body-md text-body-md flex flex-col md:flex-row">
+<!-- Desktop SideNav (Suppressed logic applied, but maintaining layout structure if needed, user is deep in a task) -->
+<!-- Suppressed navigation shell due to "Task-Focused" rule (Back button present) -->
+<main class="flex-1 max-w-4xl mx-auto w-full px-container-padding-mobile md:px-container-padding-desktop py-stack-md flex flex-col gap-stack-lg">
+<!-- Header / Back -->
+<header class="flex items-center gap-4">
+<button class="w-10 h-10 rounded-full border border-surface-container-high flex items-center justify-center hover:bg-surface-variant transition-colors group">
+<span class="material-symbols-outlined text-on-surface-variant group-hover:text-primary transition-colors" data-icon="arrow_back">arrow_back</span>
+</button>
+<div class="h-10 w-auto flex items-center bg-black rounded-lg p-1"><img src="https://lh3.googleusercontent.com/aida-public/AB6AXuBqAqJK09fZFDS-zj1S52XcnLyPkeDaQeZSN7jzve15FnGdnrKj6Pbe9dbpDjm_UFUHnw4kHlnGufUhgrLX0yjLZUXfMvoWoBuuGPStCI05bMHtSRlTN08014jtK8jnXJ4TG3fwiQCCrLTUK3zC93l1NxA6agBc3LUXMoghHrh7m-k2VejIperShUqncpD7gjoEEs5W52HvwA2T-rRynhjzDC8WSsMIy0sAqYiOzwKFkbrF6BHNuRs-aw" alt="huzAI Logo" class="h-full object-contain"></div>
+</header>
+<div class="grid grid-cols-1 md:grid-cols-12 gap-stack-lg">
+<!-- Left Column: Document Preview -->
+<div class="md:col-span-5 flex flex-col gap-stack-sm">
+<div class="aspect-[3/4] bg-surface-container rounded-xl border border-surface-container-high overflow-hidden relative group">
+<img class="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity duration-300" data-alt="A high fidelity, photorealistic scan of a generic modern driving licence on a dark minimalist background. The licence features intricate holographic patterns, a placeholder portrait, and sharp geometric text fields. The lighting is soft and studio-like, highlighting the subtle textures of the plastic card against the deep black surface." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBF-Nu02rKkvve9eTcndG1YxXNGNlo9POFohFRsCp1OLgOCtAmqUGGayDLUaaag9np4aV9Bq8fP7cjXNBw_7rJenTRq2G7QkCxQGrvAKC_0VsZ-e6IiEipyRLb0cC-HGcApBan49QXxBsuLXfTXlKg4wIeKdHsBWGn0nLzFBo-FGxXbr92jU0ol1EWHDHYzL5YEUiqrD6jOCzIk6xc8AcimhUUviZqL2pplddob4odMn-Y8Ztspie8nVw">
+<div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity bg-black/40 backdrop-blur-sm">
+<button class="bg-primary text-on-primary px-6 py-3 rounded-full font-label-sm text-label-sm uppercase tracking-wider hover:scale-95 transition-transform flex items-center gap-2">
+<span class="material-symbols-outlined" data-icon="zoom_in">zoom_in</span> View Full
+                         </button>
+</div>
+</div>
+<div class="flex gap-4">
+<button class="flex-1 bg-surface-container-high hover:bg-surface-variant text-primary border border-surface-container-highest rounded-lg py-3 flex items-center justify-center gap-2 transition-colors active:scale-95">
+<span class="material-symbols-outlined" data-icon="download">download</span>
+<span class="font-label-sm text-label-sm">Download</span>
+</button>
+<button class="flex-1 bg-surface-container-high hover:bg-surface-variant text-error border border-surface-container-highest rounded-lg py-3 flex items-center justify-center gap-2 transition-colors active:scale-95">
+<span class="material-symbols-outlined" data-icon="delete">delete</span>
+<span class="font-label-sm text-label-sm">Delete</span>
+</button>
+</div>
+</div>
+<!-- Right Column: Details & AI -->
+<div class="md:col-span-7 flex flex-col gap-stack-md">
+<!-- Title & Status -->
+<div class="flex flex-col gap-2">
+<div class="flex items-center gap-3">
+<span class="bg-surface-container-high text-on-surface-variant px-3 py-1 rounded-full font-label-sm text-label-sm border border-surface-container-highest">Identity</span>
+<div class="flex items-center gap-1.5 bg-primary/10 text-primary px-3 py-1 rounded-full border border-primary/20">
+<span class="w-2 h-2 rounded-full bg-primary animate-pulse"></span>
+<span class="font-label-sm text-label-sm">Active</span>
+</div>
+</div>
+<h2 class="font-display-lg-mobile text-display-lg-mobile md:font-display-lg md:text-display-lg text-primary tracking-tight">Driving Licence</h2>
+</div>
+<!-- AI Summary -->
+<div class="bg-surface-container p-stack-sm rounded-xl border border-surface-container-high relative overflow-hidden ai-border">
+<div class="absolute top-0 right-0 p-3 opacity-20">
+<span class="material-symbols-outlined text-4xl" data-icon="smart_toy">smart_toy</span>
+</div>
+<div class="flex items-start gap-4 relative z-10">
+<span class="material-symbols-outlined text-primary mt-1" data-icon="auto_awesome">auto_awesome</span>
+<p class="font-body-md text-body-md text-on-surface leading-relaxed">
+                            This document is a valid driving licence and expires on 20 September 2027.
+                        </p>
+</div>
+</div>
+<!-- Info Grid -->
+<div class="bg-surface-container rounded-xl border border-surface-container-high p-stack-md grid grid-cols-1 sm:grid-cols-2 gap-stack-sm">
+<div class="flex flex-col gap-1 border-b sm:border-b-0 sm:border-r border-surface-container-highest pb-4 sm:pb-0 pr-0 sm:pr-4">
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">Document Number</span>
+<span class="font-body-lg text-body-lg text-primary">DL-9876-5432-10</span>
+</div>
+<div class="flex flex-col gap-1 pb-4 sm:pb-0">
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">Issue Date</span>
+<span class="font-body-lg text-body-lg text-primary">21 Sep 2017</span>
+</div>
+<div class="flex flex-col gap-1 border-t border-surface-container-highest pt-4 sm:border-r pr-0 sm:pr-4">
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">Expiry Date</span>
+<span class="font-body-lg text-body-lg text-primary flex items-center gap-2">
+                            20 Sep 2027
+                        </span>
+</div>
+<div class="flex flex-col gap-1 border-t border-surface-container-highest pt-4">
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">State/Region</span>
+<span class="font-body-lg text-body-lg text-primary">California</span>
+</div>
+</div>
+<!-- Action: Reminders -->
+<div class="mt-auto pt-4">
+<button class="w-full bg-primary text-on-primary hover:bg-secondary-fixed transition-colors py-4 rounded-xl font-label-sm text-label-sm uppercase tracking-widest flex items-center justify-center gap-2 active:scale-[0.98] duration-200">
+<span class="material-symbols-outlined" data-icon="notifications_active">notifications_active</span>
+                        Create Reminder
+                    </button>
+</div>
+</div>
+</div>
+</main>
+
+
+
+
+
+
+</body></html>

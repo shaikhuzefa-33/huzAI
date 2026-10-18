@@ -1,0 +1,13 @@
+{
+  "name": "huzai-life-assistant",
+  "version": "1.0.0",
+  "description": "huzAI - AI Life Partner Fullstack Web Application",
+  "scripts": {
+    "start": "python backend/app.py",
+    "backend": "python backend/app.py",
+    "frontend": "npx serve -l 3000 ."
+  },
+  "keywords": ["ai", "assistant", "stitch", "huzai", "flask", "sqlite"],
+  "author": "",
+  "license": "ISC"
+}

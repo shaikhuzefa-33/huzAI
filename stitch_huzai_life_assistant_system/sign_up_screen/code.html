@@ -1,0 +1,244 @@
+<!DOCTYPE html><html class="dark" lang="en"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Sign Up - huzAI</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com" rel="preconnect">
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect">
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@500&amp;family=Inter:wght@400;500;600;900&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "inverse-surface": "#e5e2e1",
+                    "on-surface": "#e5e2e1",
+                    "secondary-fixed": "#e3e2e2",
+                    "on-tertiary-container": "#636565",
+                    "outline": "#8e9192",
+                    "on-error-container": "#ffdad6",
+                    "inverse-on-surface": "#313030",
+                    "primary-fixed-dim": "#c6c6c7",
+                    "on-surface-variant": "#c4c7c8",
+                    "secondary-container": "#484949",
+                    "surface-dim": "#141313",
+                    "on-primary-fixed": "#1a1c1c",
+                    "on-secondary-fixed": "#1a1c1c",
+                    "surface-bright": "#3a3939",
+                    "on-primary-container": "#636565",
+                    "error-container": "#93000a",
+                    "on-tertiary-fixed-variant": "#454747",
+                    "on-secondary-fixed-variant": "#464747",
+                    "secondary": "#c6c6c6",
+                    "on-tertiary": "#2f3131",
+                    "inverse-primary": "#5d5f5f",
+                    "primary-container": "#e2e2e2",
+                    "surface-container-high": "#2a2a2a",
+                    "tertiary-container": "#e2e2e2",
+                    "tertiary-fixed": "#e2e2e2",
+                    "surface-container-lowest": "#0e0e0e",
+                    "on-error": "#690005",
+                    "on-tertiary-fixed": "#1a1c1c",
+                    "tertiary": "#ffffff",
+                    "on-primary": "#2f3131",
+                    "on-secondary-container": "#b8b8b8",
+                    "on-primary-fixed-variant": "#454747",
+                    "tertiary-fixed-dim": "#c6c6c7",
+                    "primary-fixed": "#e2e2e2",
+                    "surface-container-highest": "#353434",
+                    "surface-variant": "#353434",
+                    "background": "#141313",
+                    "error": "#ffb4ab",
+                    "surface-container-low": "#1c1b1b",
+                    "primary": "#ffffff",
+                    "surface-tint": "#c6c6c7",
+                    "outline-variant": "#444748",
+                    "surface": "#141313",
+                    "secondary-fixed-dim": "#c6c6c6",
+                    "on-secondary": "#2f3131",
+                    "surface-container": "#201f1f",
+                    "on-background": "#e5e2e1"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "container-padding-desktop": "64px",
+                    "unit": "8px",
+                    "stack-lg": "48px",
+                    "gutter": "16px",
+                    "stack-sm": "12px",
+                    "container-padding-mobile": "20px",
+                    "stack-md": "24px"
+            },
+            "fontFamily": {
+                    "display-lg": [
+                            "Inter"
+                    ],
+                    "headline-md": [
+                            "Inter"
+                    ],
+                    "body-lg": [
+                            "Inter"
+                    ],
+                    "label-sm": [
+                            "Geist"
+                    ],
+                    "display-lg-mobile": [
+                            "Inter"
+                    ],
+                    "body-md": [
+                            "Inter"
+                    ]
+            },
+            "fontSize": {
+                    "display-lg": [
+                            "48px",
+                            {
+                                    "lineHeight": "56px",
+                                    "letterSpacing": "-0.02em",
+                                    "fontWeight": "600"
+                            }
+                    ],
+                    "headline-md": [
+                            "24px",
+                            {
+                                    "lineHeight": "32px",
+                                    "letterSpacing": "-0.01em",
+                                    "fontWeight": "500"
+                            }
+                    ],
+                    "body-lg": [
+                            "20px",
+                            {
+                                    "lineHeight": "30px",
+                                    "fontWeight": "400"
+                            }
+                    ],
+                    "label-sm": [
+                            "12px",
+                            {
+                                    "lineHeight": "16px",
+                                    "letterSpacing": "0.05em",
+                                    "fontWeight": "500"
+                            }
+                    ],
+                    "display-lg-mobile": [
+                            "32px",
+                            {
+                                    "lineHeight": "40px",
+                                    "letterSpacing": "-0.02em",
+                                    "fontWeight": "600"
+                            }
+                    ],
+                    "body-md": [
+                            "16px",
+                            {
+                                    "lineHeight": "24px",
+                                    "fontWeight": "400"
+                            }
+                    ]
+            }
+    },
+        },
+      }
+    </script>
+<style>
+        .ai-input-focus:focus-within {
+            box-shadow: 0 0 0 1px #8e9192;
+            border-color: #8e9192;
+        }
+        
+        .premium-bg {
+            background: radial-gradient(circle at 50% 0%, rgba(42, 42, 42, 0.4) 0%, rgba(20, 19, 19, 1) 70%);
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body-md min-h-screen flex flex-col premium-bg selection:bg-surface-container-high selection:text-primary">
+<!-- Transactional Screen: Navigation Shell Suppressed -->
+<!-- Main Content Canvas -->
+<main class="flex-1 flex items-center justify-center p-container-padding-mobile md:p-container-padding-desktop">
+<div class="w-full max-w-md bg-surface border border-surface-container-high rounded-xl p-stack-lg md:p-12 relative overflow-hidden">
+<!-- Subtle ambient glow in the corner of the card -->
+<div class="absolute -top-20 -right-20 w-40 h-40 bg-surface-container-highest rounded-full blur-[60px] opacity-30 pointer-events-none"></div>
+<!-- Brand Anchor -->
+<div class="flex justify-center mb-stack-md"><div class="bg-surface-container-lowest p-2 rounded-lg"><img src="https://lh3.googleusercontent.com/aida-public/AB6AXuBqAqJK09fZFDS-zj1S52XcnLyPkeDaQeZSN7jzve15FnGdnrKj6Pbe9dbpDjm_UFUHnw4kHlnGufUhgrLX0yjLZUXfMvoWoBuuGPStCI05bMHtSRlTN08014jtK8jnXJ4TG3fwiQCCrLTUK3zC93l1NxA6agBc3LUXMoghHrh7m-k2VejIperShUqncpD7gjoEEs5W52HvwA2T-rRynhjzDC8WSsMIy0sAqYiOzwKFkbrF6BHNuRs-aw" alt="huzAI Logo" class="h-12 w-auto"></div></div>
+<div class="text-center mb-stack-lg">
+<h1 class="font-headline-md text-headline-md text-primary mb-unit">Create your huzAI account</h1>
+<p class="font-body-md text-body-md text-on-surface-variant">Join to start your journey with a premium AI life partner.</p>
+</div>
+<form aria-label="Sign Up Form" class="flex flex-col gap-stack-md">
+<!-- Full Name Field -->
+<div class="flex flex-col gap-unit">
+<label class="font-label-sm text-label-sm text-secondary" for="fullName">Full Name</label>
+<div class="relative flex items-center bg-surface-container-lowest border border-surface-container-high rounded-lg ai-input-focus transition-colors duration-200">
+<span class="material-symbols-outlined text-outline absolute left-3 pointer-events-none" data-icon="person" style="font-variation-settings: 'FILL' 0;">person</span>
+<input class="w-full bg-transparent border-none text-primary font-body-md pl-10 pr-4 py-3 rounded-lg focus:ring-0 placeholder-outline-variant" id="fullName" name="fullName" placeholder="Jane Doe" required="" type="text">
+</div>
+</div>
+<!-- Email Field -->
+<div class="flex flex-col gap-unit">
+<label class="font-label-sm text-label-sm text-secondary" for="email">Email Address</label>
+<div class="relative flex items-center bg-surface-container-lowest border border-surface-container-high rounded-lg ai-input-focus transition-colors duration-200">
+<span class="material-symbols-outlined text-outline absolute left-3 pointer-events-none" data-icon="mail" style="font-variation-settings: 'FILL' 0;">mail</span>
+<input class="w-full bg-transparent border-none text-primary font-body-md pl-10 pr-4 py-3 rounded-lg focus:ring-0 placeholder-outline-variant" id="email" name="email" placeholder="jane@example.com" required="" type="email">
+</div>
+</div>
+<!-- Password Field -->
+<div class="flex flex-col gap-unit">
+<label class="font-label-sm text-label-sm text-secondary" for="password">Password</label>
+<div class="relative flex items-center bg-surface-container-lowest border border-surface-container-high rounded-lg ai-input-focus transition-colors duration-200">
+<span class="material-symbols-outlined text-outline absolute left-3 pointer-events-none" data-icon="lock" style="font-variation-settings: 'FILL' 0;">lock</span>
+<input class="w-full bg-transparent border-none text-primary font-body-md pl-10 pr-10 py-3 rounded-lg focus:ring-0 placeholder-outline-variant" id="password" name="password" placeholder="••••••••" required="" type="password">
+<button aria-label="Toggle password visibility" class="absolute right-3 text-outline hover:text-primary transition-colors focus:outline-none" type="button">
+<span class="material-symbols-outlined" data-icon="visibility" style="font-variation-settings: 'FILL' 0;">visibility</span>
+</button>
+</div>
+</div>
+<!-- Confirm Password Field -->
+<div class="flex flex-col gap-unit">
+<label class="font-label-sm text-label-sm text-secondary" for="confirmPassword">Confirm Password</label>
+<div class="relative flex items-center bg-surface-container-lowest border border-surface-container-high rounded-lg ai-input-focus transition-colors duration-200">
+<span class="material-symbols-outlined text-outline absolute left-3 pointer-events-none" data-icon="lock_reset" style="font-variation-settings: 'FILL' 0;">lock_reset</span>
+<input class="w-full bg-transparent border-none text-primary font-body-md pl-10 pr-10 py-3 rounded-lg focus:ring-0 placeholder-outline-variant" id="confirmPassword" name="confirmPassword" placeholder="••••••••" required="" type="password">
+</div>
+</div>
+<!-- Terms Checkbox -->
+<div class="flex items-start mt-unit">
+<div class="flex items-center h-5">
+<input class="w-4 h-4 bg-surface-container-lowest border-outline rounded text-primary focus:ring-primary focus:ring-offset-background cursor-pointer" id="terms" name="terms" required="" type="checkbox">
+</div>
+<label class="ml-3 font-body-md text-sm text-on-surface-variant cursor-pointer" for="terms">
+                        I agree to the <a class="text-primary hover:underline transition-all" href="#">Terms</a> and <a class="text-primary hover:underline transition-all" href="#">Privacy Policy</a>
+</label>
+</div>
+<!-- Actions -->
+<div class="mt-stack-sm flex flex-col gap-gutter">
+<button class="w-full bg-primary text-background font-label-sm text-label-sm py-3 px-6 rounded-lg hover:bg-surface-tint active:scale-[0.98] transition-all duration-200 flex justify-center items-center gap-2" type="submit">
+                        Create Account
+                        <span class="material-symbols-outlined text-[16px]" data-icon="arrow_forward" style="font-variation-settings: 'FILL' 0;">arrow_forward</span>
+</button>
+<div class="text-center mt-unit">
+<a class="font-body-md text-sm text-on-surface-variant hover:text-primary transition-colors duration-200" href="#">
+                            Already have an account? <span class="text-primary font-medium">Log in</span>
+</a>
+</div>
+</div>
+</form>
+</div>
+</main>
+
+
+
+
+
+
+
+
+</body></html>

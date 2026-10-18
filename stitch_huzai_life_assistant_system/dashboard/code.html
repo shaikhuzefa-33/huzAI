@@ -1,0 +1,389 @@
+<!DOCTYPE html><html class="dark" lang="en"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>huzAI Dashboard</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@100..900&amp;family=Inter:wght@100..900&amp;display=swap" rel="stylesheet">
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        
+        /* AI Input Gradient Border Effect */
+        .ai-input-wrapper {
+            position: relative;
+            border-radius: 9999px;
+            background: linear-gradient(to right, #444748, #c6c6c7, #444748);
+            background-size: 200% 100%;
+            animation: gradient-shift 5s ease infinite;
+            padding: 1px; /* Border thickness */
+        }
+        
+        @keyframes gradient-shift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        /* Custom Scrollbar for Sidebar */
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 4px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background-color: #2a2a2a;
+            border-radius: 20px;
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "inverse-surface": "#e5e2e1",
+                        "on-surface": "#e5e2e1",
+                        "secondary-fixed": "#e3e2e2",
+                        "on-tertiary-container": "#636565",
+                        "outline": "#8e9192",
+                        "on-error-container": "#ffdad6",
+                        "inverse-on-surface": "#313030",
+                        "primary-fixed-dim": "#c6c6c7",
+                        "on-surface-variant": "#c4c7c8",
+                        "secondary-container": "#484949",
+                        "surface-dim": "#141313",
+                        "on-primary-fixed": "#1a1c1c",
+                        "on-secondary-fixed": "#1a1c1c",
+                        "surface-bright": "#3a3939",
+                        "on-primary-container": "#636565",
+                        "error-container": "#93000a",
+                        "on-tertiary-fixed-variant": "#454747",
+                        "on-secondary-fixed-variant": "#464747",
+                        "secondary": "#c6c6c6",
+                        "on-tertiary": "#2f3131",
+                        "inverse-primary": "#5d5f5f",
+                        "primary-container": "#e2e2e2",
+                        "surface-container-high": "#2a2a2a",
+                        "tertiary-container": "#e2e2e2",
+                        "tertiary-fixed": "#e2e2e2",
+                        "surface-container-lowest": "#0e0e0e",
+                        "on-error": "#690005",
+                        "on-tertiary-fixed": "#1a1c1c",
+                        "tertiary": "#ffffff",
+                        "on-primary": "#2f3131",
+                        "on-secondary-container": "#b8b8b8",
+                        "on-primary-fixed-variant": "#454747",
+                        "tertiary-fixed-dim": "#c6c6c7",
+                        "primary-fixed": "#e2e2e2",
+                        "surface-container-highest": "#353434",
+                        "surface-variant": "#353434",
+                        "background": "#141313",
+                        "error": "#ffb4ab",
+                        "surface-container-low": "#1c1b1b",
+                        "primary": "#ffffff",
+                        "surface-tint": "#c6c6c7",
+                        "outline-variant": "#444748",
+                        "surface": "#141313",
+                        "secondary-fixed-dim": "#c6c6c6",
+                        "on-secondary": "#2f3131",
+                        "surface-container": "#201f1f",
+                        "on-background": "#e5e2e1"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "container-padding-desktop": "64px",
+                        "unit": "8px",
+                        "stack-lg": "48px",
+                        "gutter": "16px",
+                        "stack-sm": "12px",
+                        "container-padding-mobile": "20px",
+                        "stack-md": "24px"
+                    },
+                    "fontFamily": {
+                        "display-lg": ["Inter"],
+                        "headline-md": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "label-sm": ["Geist"],
+                        "display-lg-mobile": ["Inter"],
+                        "body-md": ["Inter"]
+                    },
+                    "fontSize": {
+                        "display-lg": ["48px", { "lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "600" }],
+                        "headline-md": ["24px", { "lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "500" }],
+                        "body-lg": ["20px", { "lineHeight": "30px", "fontWeight": "400" }],
+                        "label-sm": ["12px", { "lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "500" }],
+                        "display-lg-mobile": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "600" }],
+                        "body-md": ["16px", { "lineHeight": "24px", "fontWeight": "400" }]
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-background text-on-background font-body-md text-body-md flex min-h-screen antialiased selection:bg-primary-container selection:text-on-primary-container">
+<!-- TopAppBar (Mobile Only) -->
+<header class="sticky top-0 w-full z-40 border-b border-outline-variant bg-background/90 dark:bg-background/90 backdrop-blur-md flex justify-between items-center px-container-padding-mobile py-unit md:hidden">
+<div class="w-10 h-10 rounded-full overflow-hidden shrink-0"><img src="https://lh3.googleusercontent.com/aida-public/AB6AXuBqAqJK09fZFDS-zj1S52XcnLyPkeDaQeZSN7jzve15FnGdnrKj6Pbe9dbpDjm_UFUHnw4kHlnGufUhgrLX0yjLZUXfMvoWoBuuGPStCI05bMHtSRlTN08014jtK8jnXJ4TG3fwiQCCrLTUK3zC93l1NxA6agBc3LUXMoghHrh7m-k2VejIperShUqncpD7gjoEEs5W52HvwA2T-rRynhjzDC8WSsMIy0sAqYiOzwKFkbrF6BHNuRs-aw" alt="huzAI Logo" class="w-full h-full object-cover bg-black"></div>
+<button class="w-10 h-10 flex items-center justify-center rounded-full bg-surface-container hover:bg-surface-variant transition-opacity duration-300">
+<span class="material-symbols-outlined text-primary" data-icon="account_circle">account_circle</span>
+</button>
+</header>
+<!-- SideNavBar (Desktop Only) -->
+<aside class="h-screen w-64 fixed left-0 top-0 overflow-y-auto border-r border-outline-variant bg-surface-container-lowest hidden md:flex flex-col p-stack-md custom-scrollbar z-50">
+<!-- Brand Header -->
+<div class="mb-stack-lg flex items-center gap-3 px-2">
+<div class="w-10 h-10 rounded-full overflow-hidden shrink-0"><img src="https://lh3.googleusercontent.com/aida-public/AB6AXuBqAqJK09fZFDS-zj1S52XcnLyPkeDaQeZSN7jzve15FnGdnrKj6Pbe9dbpDjm_UFUHnw4kHlnGufUhgrLX0yjLZUXfMvoWoBuuGPStCI05bMHtSRlTN08014jtK8jnXJ4TG3fwiQCCrLTUK3zC93l1NxA6agBc3LUXMoghHrh7m-k2VejIperShUqncpD7gjoEEs5W52HvwA2T-rRynhjzDC8WSsMIy0sAqYiOzwKFkbrF6BHNuRs-aw" alt="huzAI Logo" class="w-full h-full object-cover bg-black"></div>
+<div>
+<h1 class="font-display-lg text-display-lg font-bold text-primary tracking-tight text-[28px] leading-none">huzAI</h1>
+<p class="font-label-sm text-label-sm text-on-surface-variant">AI Life Partner</p>
+</div>
+</div>
+<!-- Navigation Links -->
+<nav class="flex-1 flex flex-col gap-1">
+<a class="flex items-center gap-3 px-4 py-3 text-primary font-bold bg-surface-container-highest rounded-lg transition-transform scale-95 active:scale-90" href="#">
+<span class="material-symbols-outlined text-[20px]" data-icon="home" style="font-variation-settings: 'FILL' 1;">home</span>
+<span class="font-label-sm text-label-sm">Home</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:text-on-surface hover:bg-surface-variant transition-colors duration-200 rounded-lg" href="#">
+<span class="material-symbols-outlined text-[20px]" data-icon="smart_toy">smart_toy</span>
+<span class="font-label-sm text-label-sm">AI Assistant</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:text-on-surface hover:bg-surface-variant transition-colors duration-200 rounded-lg" href="#">
+<span class="material-symbols-outlined text-[20px]" data-icon="description">description</span>
+<span class="font-label-sm text-label-sm">Documents</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:text-on-surface hover:bg-surface-variant transition-colors duration-200 rounded-lg" href="#">
+<span class="material-symbols-outlined text-[20px]" data-icon="notifications">notifications</span>
+<span class="font-label-sm text-label-sm">Reminders</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:text-on-surface hover:bg-surface-variant transition-colors duration-200 rounded-lg" href="#">
+<span class="material-symbols-outlined text-[20px]" data-icon="account_balance">account_balance</span>
+<span class="font-label-sm text-label-sm">Government Guide</span>
+</a>
+<div class="h-px w-full bg-outline-variant/50 my-2"></div>
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:text-on-surface hover:bg-surface-variant transition-colors duration-200 rounded-lg" href="#">
+<span class="material-symbols-outlined text-[20px]" data-icon="elderly">elderly</span>
+<span class="font-label-sm text-label-sm">Elder Mode</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:text-on-surface hover:bg-surface-variant transition-colors duration-200 rounded-lg" href="#">
+<span class="material-symbols-outlined text-[20px]" data-icon="family_restroom">family_restroom</span>
+<span class="font-label-sm text-label-sm">Trusted Family</span>
+</a>
+<div class="mt-auto flex flex-col gap-1 pt-stack-md">
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:text-on-surface hover:bg-surface-variant transition-colors duration-200 rounded-lg" href="#">
+<span class="material-symbols-outlined text-[20px]" data-icon="person">person</span>
+<span class="font-label-sm text-label-sm">Profile</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:text-on-surface hover:bg-surface-variant transition-colors duration-200 rounded-lg" href="#">
+<span class="material-symbols-outlined text-[20px]" data-icon="settings">settings</span>
+<span class="font-label-sm text-label-sm">Settings</span>
+</a>
+</div>
+</nav>
+</aside>
+<!-- Main Content Area -->
+<main class="flex-1 md:ml-64 w-full flex flex-col pb-28 md:pb-stack-lg pt-stack-md px-container-padding-mobile md:px-container-padding-desktop max-w-[1440px] mx-auto gap-stack-lg">
+<!-- Header & AI Input Section -->
+<section class="flex flex-col gap-stack-md items-center text-center mt-4 md:mt-8">
+<div class="flex flex-col gap-1">
+<h2 class="font-display-lg-mobile md:font-display-lg text-display-lg-mobile md:text-display-lg text-primary tracking-tight">Good morning, Alex</h2>
+<p class="font-headline-md-mobile md:font-headline-md text-headline-md-mobile md:text-headline-md text-on-surface-variant">How can huzAI help you today?</p>
+</div>
+<!-- Large AI Input -->
+<div class="w-full max-w-3xl mt-stack-sm group">
+<div class="ai-input-wrapper w-full shadow-2xl shadow-surface-tint/5">
+<div class="bg-surface-container-high rounded-full w-full flex items-center p-2 pl-6 pr-3 transition-colors duration-300 group-hover:bg-surface-container-highest">
+<input class="flex-1 bg-transparent border-none outline-none text-primary font-body-lg text-body-lg placeholder:text-on-surface-variant focus:ring-0" placeholder="Ask huzAI anything..." type="text">
+<div class="flex items-center gap-2">
+<button class="w-12 h-12 flex items-center justify-center rounded-full text-on-surface-variant hover:bg-surface-variant hover:text-primary transition-all active:scale-95">
+<span class="material-symbols-outlined" data-icon="mic">mic</span>
+</button>
+<button class="w-12 h-12 flex items-center justify-center rounded-full bg-primary text-on-primary hover:bg-primary-fixed transition-all active:scale-95 shadow-lg shadow-primary/20">
+<span class="material-symbols-outlined" data-icon="send" style="font-variation-settings: 'FILL' 1;">send</span>
+</button>
+</div>
+</div>
+</div>
+<div class="flex flex-wrap justify-center gap-2 mt-stack-sm">
+<span class="px-4 py-2 rounded-full bg-surface-container border border-surface-variant text-secondary font-label-sm text-label-sm hover:bg-surface-variant cursor-pointer transition-colors">Find a doctor</span>
+<span class="px-4 py-2 rounded-full bg-surface-container border border-surface-variant text-secondary font-label-sm text-label-sm hover:bg-surface-variant cursor-pointer transition-colors">Renew car insurance</span>
+<span class="px-4 py-2 rounded-full bg-surface-container border border-surface-variant text-secondary font-label-sm text-label-sm hover:bg-surface-variant cursor-pointer transition-colors">Summarize latest mail</span>
+</div>
+</div>
+</section>
+<!-- Quick Actions Bento Grid -->
+<section class="mt-stack-sm">
+<h3 class="font-headline-md text-headline-md text-primary mb-stack-sm px-1">Quick Actions</h3>
+<div class="grid grid-cols-2 md:grid-cols-4 gap-gutter">
+<button class="flex flex-col items-start p-stack-md bg-surface-container-lowest border border-surface-variant rounded-xl hover:border-outline hover:bg-surface-container-low transition-all duration-300 text-left group">
+<div class="w-12 h-12 rounded-full bg-surface-container-highest flex items-center justify-center mb-stack-sm group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-primary" data-icon="description">description</span>
+</div>
+<span class="font-body-md text-body-md font-medium text-primary">Documents</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant mt-1 line-clamp-1">Manage files</span>
+</button>
+<button class="flex flex-col items-start p-stack-md bg-surface-container-lowest border border-surface-variant rounded-xl hover:border-outline hover:bg-surface-container-low transition-all duration-300 text-left group">
+<div class="w-12 h-12 rounded-full bg-surface-container-highest flex items-center justify-center mb-stack-sm group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-primary" data-icon="account_balance">account_balance</span>
+</div>
+<span class="font-body-md text-body-md font-medium text-primary">Gov Guide</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant mt-1 line-clamp-1">Official forms</span>
+</button>
+<button class="flex flex-col items-start p-stack-md bg-surface-container-lowest border border-surface-variant rounded-xl hover:border-outline hover:bg-surface-container-low transition-all duration-300 text-left group">
+<div class="w-12 h-12 rounded-full bg-surface-container-highest flex items-center justify-center mb-stack-sm group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-primary" data-icon="notifications">notifications</span>
+</div>
+<span class="font-body-md text-body-md font-medium text-primary">Reminders</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant mt-1 line-clamp-1">2 upcoming</span>
+</button>
+<button class="flex flex-col items-start p-stack-md bg-surface-container-lowest border border-surface-variant rounded-xl hover:border-outline hover:bg-surface-container-low transition-all duration-300 text-left group">
+<div class="w-12 h-12 rounded-full bg-surface-container-highest flex items-center justify-center mb-stack-sm group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-primary" data-icon="elderly">elderly</span>
+</div>
+<span class="font-body-md text-body-md font-medium text-primary">Elder Mode</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant mt-1 line-clamp-1">Accessibility</span>
+</button>
+</div>
+</section>
+<!-- Upcoming Tasks -->
+<section class="mt-stack-sm">
+<div class="flex items-center justify-between mb-stack-sm px-1">
+<h3 class="font-headline-md text-headline-md text-primary">Upcoming Tasks</h3>
+<button class="font-label-sm text-label-sm text-on-surface-variant hover:text-primary transition-colors flex items-center gap-1">
+                    View all <span class="material-symbols-outlined text-[16px]" data-icon="arrow_forward">arrow_forward</span>
+</button>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-gutter">
+<!-- Task Card 1 -->
+<div class="p-stack-md bg-surface-container-high border border-surface-variant rounded-xl flex flex-col gap-3 relative overflow-hidden">
+<div class="absolute top-0 right-0 w-16 h-16 bg-error-container/10 rounded-bl-[100px] blur-xl"></div>
+<div class="flex items-center justify-between">
+<div class="w-10 h-10 rounded-full bg-surface-container flex items-center justify-center text-error">
+<span class="material-symbols-outlined" data-icon="health_and_safety">health_and_safety</span>
+</div>
+<span class="font-label-sm text-label-sm text-error bg-error-container/20 px-2 py-1 rounded-md">Urgent</span>
+</div>
+<div>
+<h4 class="font-body-lg text-body-lg font-medium text-primary mb-1">Insurance renewal</h4>
+<p class="font-body-md text-body-md text-on-surface-variant line-clamp-2">Health insurance policy expires in 3 days. Action required.</p>
+</div>
+</div>
+<!-- Task Card 2 -->
+<div class="p-stack-md bg-surface-container-high border border-surface-variant rounded-xl flex flex-col gap-3">
+<div class="flex items-center justify-between">
+<div class="w-10 h-10 rounded-full bg-surface-container flex items-center justify-center text-primary-fixed-dim">
+<span class="material-symbols-outlined" data-icon="id_card">id_card</span>
+</div>
+<span class="font-label-sm text-label-sm text-on-surface-variant bg-surface-container px-2 py-1 rounded-md">Next week</span>
+</div>
+<div>
+<h4 class="font-body-lg text-body-lg font-medium text-primary mb-1">Document expiry</h4>
+<p class="font-body-md text-body-md text-on-surface-variant line-clamp-2">Driver's license renewal window opens soon.</p>
+</div>
+</div>
+<!-- Task Card 3 -->
+<div class="p-stack-md bg-surface-container-high border border-surface-variant rounded-xl flex flex-col gap-3">
+<div class="flex items-center justify-between">
+<div class="w-10 h-10 rounded-full bg-surface-container flex items-center justify-center text-primary-fixed-dim">
+<span class="material-symbols-outlined" data-icon="receipt_long">receipt_long</span>
+</div>
+<span class="font-label-sm text-label-sm text-on-surface-variant bg-surface-container px-2 py-1 rounded-md">In 14 days</span>
+</div>
+<div>
+<h4 class="font-body-lg text-body-lg font-medium text-primary mb-1">Bill payment</h4>
+<p class="font-body-md text-body-md text-on-surface-variant line-clamp-2">Quarterly property tax payment due.</p>
+</div>
+</div>
+<!-- Task Card 4 -->
+<div class="p-stack-md bg-surface-container-high border border-surface-variant rounded-xl flex flex-col gap-3">
+<div class="flex items-center justify-between">
+<div class="w-10 h-10 rounded-full bg-surface-container flex items-center justify-center text-primary-fixed-dim">
+<span class="material-symbols-outlined" data-icon="calendar_month">calendar_month</span>
+</div>
+<span class="font-label-sm text-label-sm text-on-surface-variant bg-surface-container px-2 py-1 rounded-md">In 3 weeks</span>
+</div>
+<div>
+<h4 class="font-body-lg text-body-lg font-medium text-primary mb-1">Appointment</h4>
+<p class="font-body-md text-body-md text-on-surface-variant line-clamp-2">Annual checkup with Dr. Smith scheduled.</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Recent Activity -->
+<section class="mt-stack-sm">
+<h3 class="font-headline-md text-headline-md text-primary mb-stack-sm px-1">Recent Activity</h3>
+<div class="bg-surface-container-highest border border-surface-variant rounded-xl p-stack-sm md:p-stack-md flex flex-col divide-y divide-surface-variant">
+<div class="flex items-center gap-4 py-4 first:pt-0 last:pb-0">
+<div class="w-10 h-10 rounded-full bg-surface-container flex items-center justify-center text-on-surface-variant shrink-0">
+<span class="material-symbols-outlined" data-icon="description">description</span>
+</div>
+<div class="flex-1 min-w-0">
+<p class="font-body-md text-body-md text-primary truncate">Uploaded "2023_Tax_Return.pdf"</p>
+<p class="font-label-sm text-label-sm text-on-surface-variant">2 hours ago</p>
+</div>
+</div>
+<div class="flex items-center gap-4 py-4 first:pt-0 last:pb-0">
+<div class="w-10 h-10 rounded-full bg-surface-container flex items-center justify-center text-on-surface-variant shrink-0">
+<span class="material-symbols-outlined" data-icon="smart_toy">smart_toy</span>
+</div>
+<div class="flex-1 min-w-0">
+<p class="font-body-md text-body-md text-primary truncate">Asked huzAI about pension benefits</p>
+<p class="font-label-sm text-label-sm text-on-surface-variant">Yesterday</p>
+</div>
+</div>
+<div class="flex items-center gap-4 py-4 first:pt-0 last:pb-0">
+<div class="w-10 h-10 rounded-full bg-surface-container flex items-center justify-center text-on-surface-variant shrink-0">
+<span class="material-symbols-outlined" data-icon="done_all">done_all</span>
+</div>
+<div class="flex-1 min-w-0">
+<p class="font-body-md text-body-md text-primary truncate">Completed task: Vehicle registration</p>
+<p class="font-label-sm text-label-sm text-on-surface-variant">Oct 12, 2023</p>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- BottomNavBar (Mobile Only) -->
+<nav class="fixed bottom-0 w-full z-50 h-20 rounded-t-xl border-t border-outline-variant bg-surface-container-low/80 backdrop-blur-xl flex justify-around items-center px-container-padding-mobile pb-4 md:hidden">
+<a class="flex flex-col items-center justify-center text-primary bg-primary-container/20 rounded-xl p-2 active:scale-95 transition-all w-16" href="#">
+<span class="material-symbols-outlined mb-1" data-icon="home" style="font-variation-settings: 'FILL' 1;">home</span>
+<span class="font-label-sm text-label-sm">Home</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:text-primary active:scale-95 transition-all w-16" href="#">
+<span class="material-symbols-outlined mb-1" data-icon="smart_toy">smart_toy</span>
+<span class="font-label-sm text-label-sm">AI</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:text-primary active:scale-95 transition-all w-16" href="#">
+<span class="material-symbols-outlined mb-1" data-icon="description">description</span>
+<span class="font-label-sm text-label-sm">Docs</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:text-primary active:scale-95 transition-all w-16" href="#">
+<span class="material-symbols-outlined mb-1 relative" data-icon="notifications">
+                notifications
+                <span class="absolute top-0 right-0 w-2 h-2 bg-error rounded-full"></span>
+</span>
+<span class="font-label-sm text-label-sm">Reminders</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:text-primary active:scale-95 transition-all w-16" href="#">
+<span class="material-symbols-outlined mb-1" data-icon="person">person</span>
+<span class="font-label-sm text-label-sm">Profile</span>
+</a>
+</nav>
+
+
+
+
+
+
+
+
+</body></html>
